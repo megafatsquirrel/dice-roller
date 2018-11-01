@@ -1,17 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <h1>Welcome to the Dice Roller</h1>
+    <div class="container">
+      <button v-on:click="rollDice(3)">Roll a D3</button>
+      <button v-on:click="rollDice(4)">Roll a D4</button>
+      <button v-on:click="rollDice(6)">Roll a D6</button>
+      <button v-on:click="rollDice(10)">Roll a D10</button>
+      <button v-on:click="rollDice(20)">Roll a D20</button>
+    </div>  
+    <hr>
+    <br />
+    <p>{{diceType}}</p>
+    <p>Result: {{result}}</p>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  data: function() {
+    return { result: '',
+             diceType: '' 
+           }
+  },
+  methods: {
+    rollDice: function (max) {
+      this.diceType = 'Rolling a D' + max + '!';
+      this.result = Math.floor(Math.random() * Math.floor(max)) + 1;
+    }
   }
 }
 </script>
@@ -24,5 +40,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+button {
+  padding: 25px;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+.container {
+  flex: 1 1 100%;
 }
 </style>
