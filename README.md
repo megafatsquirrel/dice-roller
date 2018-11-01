@@ -1,5 +1,8 @@
 # dice-roller
 
+## Site
+https://dice-roller.now.sh/
+
 ## Project setup
 ```
 yarn install
